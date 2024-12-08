@@ -1,0 +1,39 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui;
+}
+
+.container {
+    margin: 0 70px;
+}
+
+.field {
+    font-size: 1rem;
+    padding: 20px 10px;
+    width: 80%;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    background: #76ABAE;
+    outline: none;
+    color: #EEEEEE;
+
+    &::placeholder {
+        color: #eeeeeeb6;
+    }
+}
+
+.button{
+    font-size: 1rem;
+    border-radius: 10px;
+    padding: 8px 50px;
+    background-color: #EEEEEE;
+    color: #31363F;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: #cecece;
+    }
+}
