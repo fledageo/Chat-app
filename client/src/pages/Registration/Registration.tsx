@@ -2,13 +2,19 @@ import { useForm } from 'react-hook-form'
 import { createUser } from '../../lib/api'
 import { IUserData } from '../../lib/types'
 import styles from './Registration.module.scss'
+import { useNavigate } from 'react-router-dom'
 
 export const Registration = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm<IUserData>()
+    const navigate = useNavigate()
 
     const handleCreate = async (data: IUserData) => {
         createUser(data)
-            .then(res => console.log(res))
+            .then(res => {
+                if(res.status === "ok"){
+                    navigate("/login")
+                }
+            })
     }
 
     return (

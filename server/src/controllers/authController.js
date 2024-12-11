@@ -40,24 +40,24 @@ class AuthController {
                 return res.send({ status: "error", message: "Wrong user credentials: Password" })
             }
 
-            const token = jwt.sign({ id: foundUser.id }, JWT_SECRET, { expiresIn: "5m" })
+            const token = jwt.sign({ id: foundUser.id }, JWT_SECRET, { expiresIn: "20m" })
             res.cookie('token', token, {
                 maxAge: 60 * 60 * 1000,
             });
 
             res.send({status:"ok"})
         } catch (error) {
-            console.log(error)
+            res.send({status:"error",message:"Internal server error"})
         }
     }
 
     async verifyAuth(req,res) {
         const token = req.cookies.token
         if(!token){
-            res.send({status:"error",message:"No token. Access denied!"})
+            return res.send({status:"error",message:"No token. Access denied!"})
         }
-
-        try {
+        
+        try {   
             jwt.verify(token,JWT_SECRET)
             res.send({status:"ok",message:"Access allowed"})
 

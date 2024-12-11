@@ -1,7 +1,25 @@
 .wrapper {
     height: 100dvh;
 }
-.header{
+
+.header {
     height: 70px;
     background-color: #31363F;
+    padding: 0 70px;
+    display: flex;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menuItem {
+    text-decoration: none;
+    color: #EEEEEE;
+
+    &:hover {
+        color: #eeeeeea6;
+    }
 }
