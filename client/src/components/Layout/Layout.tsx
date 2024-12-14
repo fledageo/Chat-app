@@ -1,9 +1,6 @@
 import { Outlet } from "react-router-dom"
 import styles from "./Layout.module.scss"
-import { verifyAuth } from "../../../lib/api"
-import { useEffect, useState } from "react"
-import { useAppDispatch, useAppSelector } from "../../../store/store"
-import { updateAuth } from "../../../store/actions/userActions"
+import { useAppSelector } from "../../store/store"
 
 export const Layout = () => {
     const isAuth = useAppSelector(state => state.user.isAuth)

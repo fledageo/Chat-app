@@ -1,10 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { IUserState } from "../../lib/types";
-import { setCurrentUser, updateAuth } from "../actions/userActions";
+import { IUser, IUserState } from "../../lib/types";
+import { setActives, setCurrentChat, setCurrentUser, setUsers, updateAuth } from "../actions/userActions";
 
 const initialState:IUserState = {
     currentUser: null,
-    isAuth:false
+    currentChat:null,
+    isAuth:false,
+    activeUsers:[],
+    users:[]
 }
 
 const userReducer = createReducer(initialState, builder => {
@@ -13,7 +16,16 @@ const userReducer = createReducer(initialState, builder => {
             state.isAuth = action.payload
         })
         .addCase(setCurrentUser,(state,action) => {
-            state.currentUser = action.payload
+            state.currentUser = action.payload as IUser
+        })
+        .addCase(setActives,(state,action) => {
+            state.activeUsers = action.payload 
+        })
+        .addCase(setUsers,(state,action) => {
+            state.users = action.payload
+        })
+        .addCase(setCurrentChat,(state,action) => {
+            state.currentChat = action.payload
         })
 })
 

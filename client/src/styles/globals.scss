@@ -1,12 +1,13 @@
+@use "../styles/variables.scss" as vars;
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: system-ui;
 }
-
-.container {
-    margin: 0 70px;
+body{
+    background-color: #F8F9FA;
 }
 
 .field {
@@ -16,24 +17,25 @@
     height: 30px;
     border-radius: 10px;
     border: none;
-    background: #76ABAE;
+    background: vars.$field_color;
     outline: none;
-    color: #EEEEEE;
+    color: #495057;
 
     &::placeholder {
-        color: #eeeeeeb6;
+        color: #6C757D;
     }
 }
 
 .button{
+    border: none;
     font-size: 1rem;
     border-radius: 10px;
     padding: 8px 50px;
-    background-color: #EEEEEE;
-    color: #31363F;
+    background-color: vars.$btn_color;
+    color: vars.$text_color;
     transition: 0.2s;
 
     &:hover {
-        background-color: #cecece;
+        background-color: vars.$hover_color;
     }
 }

@@ -8,6 +8,11 @@ class UserController {
 
         res.send({status:"ok",data:user})
     }
+
+    async getAllUsernames(req,res){
+        const usernames = await User.find({},{username:1})
+        res.send({status:"ok",data:usernames})
+    }
 }
 
 module.exports = new UserController()

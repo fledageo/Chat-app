@@ -36,18 +36,18 @@ wss.on("connection", (ws) => {
             ws.username = currentUser
             actives.set(currentUser,ws)
             sendActivesToUser(ws)
-            
             sendUpdatedActives(ws.username)
         }
     })
 
     ws.on("close", () => {
-        actives.delete(ws.userId);
+        actives.delete(ws.username);
+        sendUpdatedActives(ws.username)
     });
 })
 
 const sendActivesToUser = (ws) => {
-    ws.send(JSON.stringify(Array.from(actives).filter(elm => elm[0] !== ws.username)))
+    ws.send(JSON.stringify({type:"actives",payload:Array.from(actives).filter(elm => elm[0] !== ws.username)}))
 }
 
 const sendUpdatedActives = (currentUser) => {

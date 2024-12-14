@@ -1,10 +1,12 @@
-.wrapper {
+@use "../../styles/variables.scss" as vars;
+
+.wrapper { 
     height: 100dvh;
 }
 
 .header {
-    height: 70px;
-    background-color: #31363F;
+    height: 100px;
+    background: vars.$dark_gradient;
     padding: 0 70px;
     display: flex;
     align-items: center;
