@@ -16,14 +16,31 @@ export interface IResponse {
 
 export interface IUserState{
     currentUser:IUser | null
-    currentChat:IChat| null
+    currentChat:IChat | null
+    currentSocket: WebSocket | null
     isAuth:boolean
     activeUsers:unknown
     users:IUser[]
+    newMessages:NewMessages
 }
 
-//change
+export type NewMessages = {[key:string]:IMessage[]}
+
 export interface IChat{
     participants:string[],
-    messages:string[]
+    _id:string
+    _v:number
+    messages:IMessage[]
+}
+export interface IMessage{
+    content:string
+    sender:string
+    receiver:string
+    timestamp?:string
+    _id?:string
+}
+export interface ISendMessageData{
+    sender:string
+    receiver:string
+    message: string
 }

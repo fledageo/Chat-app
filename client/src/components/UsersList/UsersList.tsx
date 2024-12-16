@@ -8,7 +8,7 @@ import { IChat, IUser } from '../../lib/types'
 type Tab = "all" | "conversations"
 
 interface IProps {
-    select:() => void
+    select:(selected:string) => void
 }
 
 export const UsersList = ({select}:IProps) => {
@@ -17,7 +17,7 @@ export const UsersList = ({select}:IProps) => {
     const currentUser = useAppSelector(state => state.user.currentUser)
     const users = useAppSelector(state => state.user.users)
     const dispatch = useAppDispatch()
-
+    
     useEffect(() => {
         if (currentUser) {
             getAllUsers()
@@ -32,11 +32,14 @@ export const UsersList = ({select}:IProps) => {
         setTab(tab)
     }
 
-    const handleGetChat = async (user1: string, user2: string) => {
-        select()
-        const response = await getChat([user1, user2])
+    const handleGetChat = async (currentUser: string, selected: string) => {
+        select(selected)
+        const response = await getChat([currentUser, selected])
+
         if (response.status == "ok") {
             dispatch(setCurrentChat(response.data as IChat))
+        }else{
+            dispatch(setCurrentChat(null))
         }
     }
 

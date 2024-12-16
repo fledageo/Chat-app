@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { IChat, IUser, IUserData } from "../../lib/types";
+import { IChat, IMessage, IUser, IUserData } from "../../lib/types";
 
 export const updateAuth = createAction<boolean>('user/auth')
 
@@ -9,4 +9,6 @@ export const setActives = createAction("user/actives")
 
 export const setUsers = createAction<IUser[]>("user/users")
 
-export const setCurrentChat = createAction<IChat>("user/chat")
+export const setCurrentChat = createAction<IChat | null>("user/chat")
+
+export const setNewMessage = createAction<IMessage | null>("user/newMessage")

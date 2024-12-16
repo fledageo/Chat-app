@@ -40,7 +40,7 @@ class AuthController {
                 return res.send({ status: "error", message: "Wrong user credentials: Password" })
             }
 
-            const token = jwt.sign({ id: foundUser.id }, JWT_SECRET, { expiresIn: "20m" })
+            const token = jwt.sign({ id: foundUser.id }, JWT_SECRET, { expiresIn: "60m" })
             res.cookie('token', token, {
                 maxAge: 60 * 60 * 1000,
             });

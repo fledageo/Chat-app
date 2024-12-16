@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IResponse, IUserData } from "./types";
+import { IResponse, ISendMessageData, IUserData } from "./types";
 
 export const createUser = async (data: IUserData): Promise<IResponse> => {
     const response = await axios.post("http://localhost:5000/api/auth/registration", data)
@@ -27,11 +27,16 @@ export const getAllUsers = async ():Promise<IResponse> => {
 }
 
 export const getChat = async(users:string[]):Promise<IResponse> => {
-    const response = await axios.get("http://localhost:5000/api/chat/",{params:users})
+    const response = await axios.get("http://localhost:5000/api/chat/",{params:{users}})
     return response.data
 }
 
-export const createChat = async(users:string[]):Promise<IResponse> => {
-    const response = await axios.post("http://localhost:5000/api/chat/",{users})
-    return response.data
-}
+// export const createChat = async(users:string[]):Promise<IResponse> => {
+//     const response = await axios.post("http://localhost:5000/api/chat/",{users})
+//     return response.data
+// }
+
+// export const sendMessage = async(data:ISendMessageData):Promise<IResponse> => {
+//     const response = await axios.post("http://localhost:5000/api/chat/send",data)
+//     return response.data
+// }
