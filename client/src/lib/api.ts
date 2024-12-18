@@ -31,12 +31,8 @@ export const getChat = async(users:string[]):Promise<IResponse> => {
     return response.data
 }
 
-// export const createChat = async(users:string[]):Promise<IResponse> => {
-//     const response = await axios.post("http://localhost:5000/api/chat/",{users})
-//     return response.data
-// }
 
-// export const sendMessage = async(data:ISendMessageData):Promise<IResponse> => {
-//     const response = await axios.post("http://localhost:5000/api/chat/send",data)
-//     return response.data
-// }
+export const getConversations = async(userId:string):Promise<IResponse> => {
+    const response = await axios.get("http://localhost:5000/api/chat/conversations",{params:{userId}})
+    return response.data
+}

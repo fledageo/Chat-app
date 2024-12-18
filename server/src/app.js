@@ -81,7 +81,7 @@ wss.on("connection", (ws) => {
 
 
 const sendActivesToUser = (ws) => {
-    ws.send(JSON.stringify({ type: "actives", payload: Array.from(actives).filter(elm => elm[0] !== ws.id) }))
+    ws.send(JSON.stringify({ type: "actives", payload: Array.from(actives.keys()).filter(elm => elm !== ws.id) }))
 }
 
 const sendUpdatedActives = (currentUser) => {

@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { IMessage, IUser, IUserState } from "../../lib/types";
-import { setActives, setCurrentChat, setCurrentUser, setNewMessage, setUsers, updateAuth } from "../actions/userActions";
+import { setActives, setCurrentChat, setCurrentUser, setNewMessage, setUserConversations, setUsers, updateAuth } from "../actions/userActions";
 
 const initialState:IUserState = {
     isAuth:false,
@@ -9,7 +9,8 @@ const initialState:IUserState = {
     currentChat:null,
     activeUsers:[],
     users:[],
-    newMessages:{}
+    newMessages:{},
+    conversations:[]
 }
 
 const userReducer = createReducer(initialState, builder => {
@@ -36,6 +37,9 @@ const userReducer = createReducer(initialState, builder => {
             }else{
                 state.newMessages[message.sender] = [message]
             }
+        })
+        .addCase(setUserConversations,(state,action) => {
+            state.conversations = action.payload as string[]
         })
         
 })

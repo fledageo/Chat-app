@@ -1,20 +1,7 @@
 const Chat = require("../models/Chat")
 
 class ChatController {
-    // async createChat(req, res) {
-    //     try {
-    //         const { users, message } = req.body
-
-    //         const chat = new Chat({
-    //             participants: users,
-    //             messages: [message]
-    //         })
-    //         chat.save()
-    //         res.send({ status: "ok", data: chat })
-    //     } catch (error) {
-    //         res.send({ status: "error", message:"Something went wrong" })
-    //     }
-    // }
+    
 
     async sendMessage(req, res) {
 
@@ -39,16 +26,33 @@ class ChatController {
     }
 
     async getChat(req, res) {
-        const { users } = req.query
-        const chat = await Chat.findOne({ participants: { $all: users } })
-        
-        if (!chat) {
-            res.send({ status: "error", message: "Chat not found" })
-        } else {
-            res.send({ status: "ok", data: chat })
+        try {
+            const { users } = req.query
+            const chat = await Chat.findOne({ participants: { $all: users } })
+
+            if (!chat) {
+                res.send({ status: "error", message: "Chat not found" })
+            } else {
+                res.send({ status: "ok", data: chat })
+            }
+        } catch (error) {
+            res.status(500).send(JSON.stringify(error))
         }
     }
 
+    async getConversations(req,res){
+        const {userId} = req.query
+        console.log(userId)  //67583cb07c37e3626e7b9655
+        try {
+            const conversations = await Chat.find(
+                {participants:userId},
+                {participants:1,_id:0}
+            )
+            res.send({status:"ok",data:conversations})
+        } catch (error) {
+            res.send({status:"error",message:error})
+        }
+    }
 }
 
 module.exports = new ChatController()

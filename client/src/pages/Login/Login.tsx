@@ -30,18 +30,30 @@ export const Login = () => {
         <div className={styles.login}>
           <h3 className={styles.title}>Log In</h3>
           <form className={styles.form} onSubmit={handleSubmit(handleEnter)}>
-            <input
-              type="text"
-              placeholder="Username"
-              className={`field`}
-              {...register("username")}
-            />
-            <input
-              type="text"
-              placeholder="Password"
-              className={`field`}
-              {...register("password")}
-            />
+            <div className={styles.fieldBlock}>
+              <input
+                type="text"
+                placeholder="Username"
+                className={`field`}
+                {...register("username", {
+                  required: "Username is required",
+                  maxLength: { value: 15, message: "Username cannot exceed 15 characters" }
+                })}
+              />
+              <p className={styles.helper}>{errors.username && errors.username.message}</p>
+            </div>
+            <div className={styles.fieldBlock}>
+              <input
+                type="password"
+                placeholder="Password"
+                className={`field`}
+                {...register("password", {
+                  required: "Password is required",
+                  maxLength: { value: 20, message: "Password cannot exceed 20 characters" }
+                })}
+              />
+              <p className={styles.helper}>{errors.password && errors.password.message}</p>
+            </div>
             <button className={"button"}>Log in</button>
           </form>
         </div>

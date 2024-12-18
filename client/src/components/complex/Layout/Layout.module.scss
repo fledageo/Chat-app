@@ -1,0 +1,36 @@
+@use "../../../styles/variables.scss" as vars;
+
+
+.header {
+    height: 100px;
+    background: vars.$dark_gradient;
+    padding: 0 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: vars.$text_color;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+    color: vars.$gold_color;
+    & > h1 {
+        font-size: 1.5rem;
+    }
+}
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menuItem {
+    text-decoration: none;
+    color: vars.$text_color;
+
+
+    &:hover {
+        color: #eeeeeea6;
+    }
+}

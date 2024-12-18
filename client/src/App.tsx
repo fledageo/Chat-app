@@ -1,35 +1,25 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { Layout } from "./components/Layout/Layout"
-import { Registration } from "./pages/Registration/Registration"
-import { Login } from "./pages/Login/Login"
-import { Profile } from "./pages/Profile/Profile"
-// import { checkAuth } from "./store/actions/userActions"
+import { Outlet, useLocation, useNavigate } from "react-router-dom"
+import { Layout } from "./components/complex/Layout/Layout"
+import { useEffect } from "react"
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/registration",
-        element: <Registration />
-      },
-      {
-        path: "/login",
-        element: <Login />
-      },
-      {
-        path: "/profile/:username",
-        element: <Profile />
-      },
-    ]
-  }
-])
 
 const App = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("/registration")
+    }
+  }, [])
 
   return (
-    <RouterProvider router={router}></RouterProvider>
+    <>
+      <Layout />
+      <main>
+        <Outlet />
+      </main>
+    </>
   )
 }
 export default App

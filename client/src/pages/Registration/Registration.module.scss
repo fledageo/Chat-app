@@ -3,6 +3,21 @@
 .wrapper{
     width: 100%;
 }
+.fieldBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 70%;
+    color: rgb(224, 68, 68);
+    & > input {
+        width: 100%;
+    }
+    & > p {
+        height: 10px;
+        margin-left: 10px;
+        font-size: 0.8rem;
+    }
+}
 .container {
     display: flex;
     justify-content: center;

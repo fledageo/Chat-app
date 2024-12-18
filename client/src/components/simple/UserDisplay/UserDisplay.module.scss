@@ -1,0 +1,15 @@
+@use "../../../styles/variables.scss" as vars;
+
+.isOnlineIcon{
+    display: flex;
+    justify-content: center;
+}
+.info{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.newMessages{
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,167 @@
+@use "../../../styles/variables.scss" as vars;
+
+.wrapper {
+    height: calc(100vh - 100px);
+    padding: 20px 70px;
+    display: flex;
+    justify-content: center;
+}  
+
+.container {
+    height: 90%;
+    flex-shrink: 0;
+    width: 800px;
+    background-color: #495057;
+    display: flex;
+    border-radius: 15px; 
+    overflow: hidden;
+}
+
+.list {
+    width: 30%;   
+    height: 100%;  
+    padding: 15px;
+}
+
+.block {
+    background: vars.$light_gradient;
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.loading{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.selectedName{
+    width: 100%;
+    padding: 15px;
+    color: vars.$text_color;
+    background: vars.$dark_gradient;
+    text-align: center;
+    font-size: 1rem;
+}
+.welcome {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.5rem;
+    color: vars.$text_color_dark;
+
+    & > h2 {
+        margin-top: 20%;
+    }
+}
+
+.helpMessage {
+    padding: 5px 20px;
+    border-radius: 15px;
+    border: 1px solid vars.$text_color_dark;
+    background: none;
+    font-size: 1rem;
+    transition: 0.2s;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    background: vars.$dark_gradient;
+    height: 60px;
+    padding: 10px;
+}
+
+.actionsContainer {
+    width: 90%;
+}
+
+.field {
+    height: 100%;
+    width: 80%;
+    border: none;
+    border-radius: 15px 0 0 15px;
+    outline: none;
+    padding: 0 10px;
+    font-size: 1rem;
+    color: vars.$text_color_dark;
+    background-color: vars.$field_color;
+}
+
+.sendBtn {
+    height: 100%;
+    font-size: 1rem;
+    border-radius: 0 15px 15px 0;
+    border: none;
+    width: 20%;
+    background-color: vars.$btn_color;
+    color: vars.$text_color;
+    transition: 0.2s;
+    
+    &:hover {
+        background-color: vars.$hover_color;
+    }
+}
+
+.chat {
+    height: 100%;
+    overflow-y: auto; 
+    overflow-x: hidden; 
+
+
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: vars.$field_color;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: vars.$btn_color; 
+        border-radius: 10px; 
+        border: 2px solid vars.$field_color;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: vars.$hover_color; 
+    }
+}
+
+.chatContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    padding: 15px;
+    gap: 10px; 
+    height: 100%;
+}
+
+.message {
+    padding: 10px;
+    max-width: 40%;
+    border-radius: 10px;
+    width: fit-content;
+    overflow-wrap: break-word;
+}
+
+.rightMessage {
+    margin-left: auto;
+    background-color: vars.$gold_color;
+}
+
+.leftMessage {
+    background-color: #6c757d9d;
+}
