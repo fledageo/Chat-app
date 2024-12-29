@@ -41,7 +41,8 @@ export const Chat = () => {
         if (data.type == "newMessage") {
           const { chat, message } = data.payload
           dispatch(setNewMessage(message))
-          if (currentChat !== "start" && currentChat?._id == chat._id) {
+
+          if (currentChat !== "start" && currentChat?._id === chat._id) {
             dispatch(setCurrentChat(chat))
           }
         }
@@ -54,7 +55,7 @@ export const Chat = () => {
         }
       };
     }
-  }, [currentUser, userSelected])
+  }, [currentUser, userSelected, currentChat])
 
 
   //Scroll chat to bottom
@@ -87,11 +88,11 @@ export const Chat = () => {
           messages: [...(currentChat?.messages || []), message],
         } as IChat))
 
-      }else{
-        dispatch(setUserConversations([...conversations,message.receiver]))
+      } else {
+        dispatch(setUserConversations([...conversations, message.receiver]))
         console.log("Houddd")
       }
-      
+
       ws?.send(JSON.stringify({ type: "send", payload: message }))
     }
 

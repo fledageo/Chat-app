@@ -4,11 +4,33 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    height: 100%;
 }
 .list{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    height: 100%;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: vars.$field_color;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: vars.$btn_color; 
+        border-radius: 10px; 
+        border: 2px solid vars.$field_color;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: vars.$hover_color; 
+    }
 }
 .userBlock {
     padding: 15px;

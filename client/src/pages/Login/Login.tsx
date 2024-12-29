@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form"
 import styles from "./Login.module.scss"
 import { IUserData } from "../../lib/types"
-import { login, verifyAuth } from "../../lib/api"
+import { login } from "../../lib/api"
 import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
 import { useAppDispatch } from "../../store/store"
 import { updateAuth } from "../../store/actions/userActions"
 

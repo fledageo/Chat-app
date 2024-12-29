@@ -29,7 +29,6 @@ export const UsersList = ({ select }: IProps) => {
                     getConversations(currentUser._id as string)
                         .then(res => {
                             const conversations = res.data as ConversationData
-                            console.log("Hey")
                             const conversationsWith = conversations.map(elm => {
                                 return elm.participants.find(user => user !== currentUser._id)
                             })
